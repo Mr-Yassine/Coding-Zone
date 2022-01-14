@@ -22,13 +22,13 @@
     </h2>
 
 
-    <form action="<%=request.getContextPath()%>/login" method="post">
+    <form action="<%=request.getContextPath()%>/Login" method="post">
         <table>
             <tr>
-                <td>User Name:</td>
+                <td>Username:</td>
                 <td>
                     <label>
-                        <input type="text" name="userName" value="<%=request.getParameter("userName")%>"/>
+                        <input type="text" name="username" placeholder="Enter username"/>
                     </label>
                 </td>
             </tr>
@@ -36,7 +36,7 @@
                 <td>Password:</td>
                 <td>
                     <label>
-                        <input type="password" name="password" value="<%=request.getParameter("password")%>"/>
+                        <input type="password" name="password" placeholder="Enter password"/>
                     </label>
                 </td>
             </tr>

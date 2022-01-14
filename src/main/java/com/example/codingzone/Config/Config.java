@@ -15,16 +15,15 @@ public class Config {
     private static String passwd = "1234";
     private static String url = "jdbc:postgresql://localhost:5432/" + db;
 
-
-    public static Connection getConnection(){
-        if(databaseLink == null){
-            try {
-                databaseLink = DriverManager.getConnection(url, user, passwd);
-                System.out.println("Connected to the PostgreSQL server successfully.");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+    public static Connection getConnection() {
+        try {
+            Class.forName("org.postgresql.Driver");
+            databaseLink = DriverManager.getConnection(url, user, passwd);
+            //System.out.println("Connected to the PostgreSQL server successfully.");
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return databaseLink;
     }
+
 }
