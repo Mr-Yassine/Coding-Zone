@@ -6,8 +6,9 @@
 </head>
 <body>
     <h1>
-        <%= "Hello World!, Welcome to coding zone" %>
+        <%= "Hello World! Welcome to coding zone" %>
     </h1><br/>
+    <a href="Quiz">Quiz</a><br><br>
     <a href="Login">Login</a>
 </body>
 </html>

@@ -13,32 +13,35 @@ public class Quiz extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.setContentType("text/html");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().println("<!DOCTYPE html>");
-        response.getWriter().println("<html>");
-        response.getWriter().println("<head>");
-        response.getWriter().println("<meta>");
-        response.getWriter().println("<title>Quiz</title>");
-        response.getWriter().println("</head>");
-        response.getWriter().println("<body>");
-        response.getWriter().println("<h1>Quiz</h1>");
-        response.getWriter().println("<form action=\"Quiz\" method=\"post\">");
-        response.getWriter().println("<p>What is JAVA?</p>");
-        response.getWriter().println("<input type=\"radio\" name=\"answer\" value=\"1\">OOP Language<br>");
-        response.getWriter().println("<input type=\"radio\" name=\"answer\" value=\"2\">Script Language<br>");
-        response.getWriter().println("<input type=\"radio\" name=\"answer\" value=\"3\">Balise Language<br>");
-        response.getWriter().println("<input type=\"submit\" value=\"Submit\">");
-        response.getWriter().println("</form>");
-        response.getWriter().println("</body>");
-        response.getWriter().println("</html>");
-
-
-        //this.getServletContext().getRequestDispatcher("/WEB-INF/quiz.jsp").forward(request, response);
+        response.sendRedirect("quiz.jsp");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String name = request.getParameter("name");
+        System.out.println(name);
+
+        int q1 = Integer.parseInt(request.getParameter("q1"));
+        int q2 = Integer.parseInt(request.getParameter("q2"));
+
+        System.out.println(q1 + " " + q2);
+
+        int total = q1 + q2 ;
+
+        request.setAttribute("name", name);
+        request.setAttribute("q1", q1);
+        request.setAttribute("q2", q2);
+        request.setAttribute("total", total);
+
+        response.sendRedirect("quizresult.jsp");
+
+
+
+        if (request.getParameter("submit") != null) {
+            System.out.println("hna");
+
+        }
 
     }
 }
