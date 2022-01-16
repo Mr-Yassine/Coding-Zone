@@ -9,6 +9,7 @@
         <%= "Hello World! Welcome to coding zone" %>
     </h1><br/>
     <a href="Quiz">Quiz</a><br><br>
-    <a href="Login">Login</a>
+    <a href="Login">Login</a><br><br>
+    <a href="Staff">Sign Up</a><br><br>
 </body>
 </html>
