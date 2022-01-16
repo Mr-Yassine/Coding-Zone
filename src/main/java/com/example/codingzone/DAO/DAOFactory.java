@@ -16,12 +16,20 @@ public class DAOFactory {
     }
 
 
-    public static QuestionsModel addQuestion(QuestionsModel q){
-        return new QuestionsDAO().add(q);
-    }
-
     public static boolean isRegistered(StaffModel s) {
         return new StaffDAO().isRegistered(s);
 
     }
+
+    public static boolean getAllUsers() {
+        return new StaffDAO().getAllUsers();
+    }
+
+    public static boolean addQuestion(QuestionsModel q){
+        new QuestionsDAO().add(q);
+        return false;
+    }
+
+
+
 }

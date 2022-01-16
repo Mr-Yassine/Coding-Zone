@@ -2,7 +2,6 @@ package com.example.codingzone.DAOImpl;
 
 import com.example.codingzone.Config.Config;
 import com.example.codingzone.DAO.DAO;
-import com.example.codingzone.DAO.DAOFactory;
 import com.example.codingzone.Models.StaffModel;
 
 import java.sql.PreparedStatement;
@@ -14,23 +13,45 @@ import java.sql.Statement;
 public class StaffDAO extends DAO<StaffModel> {
 
 
-
-
     @Override
     public void find(int id) {}
+
+
+    public Object add(StaffModel s){
+
+        String query = "INSERT INTO Staff (username, email, password) VALUES (?,?,?)";
+
+        //prepared statement to avoid sql injection
+        try {
+            PreparedStatement preparedStatement = Config.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, s.getUsername());
+            preparedStatement.setString(2, s.getEmail());
+            preparedStatement.setString(3, s.getPassword());
+            preparedStatement.execute();
+            return true;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+            e.getCause();
+        }
+        return false;
+
+    }
+
+
 
     @Override
     public Object update(StaffModel obj) {return null;}
 
-    @Override
-    public void delete(StaffModel obj) {}
+
 
     @Override
     public void findAll() {}
 
+    @Override
+    public void delete(StaffModel obj) {
 
-
-
+    }
 
 
     public boolean login(String username, String password) {
@@ -60,26 +81,7 @@ public class StaffDAO extends DAO<StaffModel> {
 
 
 
-    public StaffModel add(StaffModel s){
 
-        String query = "INSERT INTO Staff (username, email, password) VALUES (?,?,?)";
-
-        //prepared statement to avoid sql injection
-        try {
-            PreparedStatement preparedStatement = Config.getConnection().prepareStatement(query);
-            preparedStatement.setString(1, s.getUsername());
-            preparedStatement.setString(2, s.getEmail());
-            preparedStatement.setString(3, s.getPassword());
-            preparedStatement.execute();
-            return s;
-
-        }catch (SQLException e){
-            e.printStackTrace();
-            e.getCause();
-        }
-        return s;
-
-    }
 
     public boolean isRegistered(StaffModel s) {
 
@@ -105,4 +107,26 @@ public class StaffDAO extends DAO<StaffModel> {
 
         return false;
     }
+
+
+
+
+
+
+    public boolean getAllUsers() {
+
+        String query = "SELECT * FROM Staff";
+
+        try {
+            Statement statement = Config.getConnection().createStatement();
+            ResultSet queryResult = statement.executeQuery(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+
+        return false;
+    }
+
+
 }

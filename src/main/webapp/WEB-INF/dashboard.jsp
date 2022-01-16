@@ -13,5 +13,10 @@
 <body>
 
 <h1>Welcome to dashboard</h1>
+
+<!-- button to show all the users -->
+<a href="<%=request.getContextPath()%>/Questions">Add question</a>
+
+
 </body>
 </html>

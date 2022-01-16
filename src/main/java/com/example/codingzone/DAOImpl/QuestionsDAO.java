@@ -1,16 +1,37 @@
 package com.example.codingzone.DAOImpl;
 
+import com.example.codingzone.Config.Config;
 import com.example.codingzone.DAO.DAO;
 import com.example.codingzone.Models.QuestionsModel;
-import com.example.codingzone.Models.StaffModel;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class QuestionsDAO extends DAO<QuestionsModel> {
 
 
-    @Override
-    public QuestionsModel add(QuestionsModel obj) {
+    public Object add(QuestionsModel q){
+
+        String query = "INSERT INTO Questions (question, answer1, answer2, answer3, correct) VALUES (?,?,?,?,?)";
+
+        //prepared statement to avoid sql injection
+        try {
+            PreparedStatement preparedStatement = Config.getConnection().prepareStatement(query);
+            preparedStatement.setString(1, q.getQuestion());
+            preparedStatement.setString(2, q.getAnswer1());
+            preparedStatement.setString(3, q.getAnswer2());
+            preparedStatement.setString(4, q.getAnswer3());
+            preparedStatement.setString(5, q.getCorrect());
+            preparedStatement.execute();
+            return q;
+
+        }catch (SQLException e){
+            e.printStackTrace();
+            e.getCause();
+        }
         return null;
     }
+
 
     @Override
     public void find(int id) {
@@ -23,26 +44,9 @@ public class QuestionsDAO extends DAO<QuestionsModel> {
     }
 
     @Override
-    public void delete(StaffModel obj) {
-
-    }
+    public void findAll() {}
 
     @Override
-    public void findAll() {
-
-    }
-/*
-    public Questions getQuestions(int id) {
-        Questions q = new Questions();
-        q.setId(1);
-        q.setQuestion("What is the output of the following code?");
-        q.setOption1("A. Hello World");
-        q.setOption2("B. Hello");
-        q.setOption3("C. Hello World");
-        q.setOption4("D. Hello");
-        q.setAnswer("C");
-        return q;
-    }*/
-
+    public void delete(QuestionsModel obj) {}
 
 }

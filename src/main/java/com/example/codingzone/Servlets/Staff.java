@@ -28,10 +28,10 @@ public class Staff extends HttpServlet {
         String password = request.getParameter("password");
 
         PrintWriter out = response.getWriter();
-
+        StaffModel s = new StaffModel();
 
         try {
-            StaffModel s = new StaffModel();
+
 
             s.setUsername(username);
             s.setEmail(email);
@@ -55,6 +55,13 @@ public class Staff extends HttpServlet {
         } catch (Exception e){
             out.println("<h1>Error</h1>");
         }
+
+        //show all the users in the database in the table format
+        out.println(DAOFactory.getAllUsers());
+        response.sendRedirect("dashboard.jsp");
+
+
+
 
     }
 }
