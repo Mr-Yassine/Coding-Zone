@@ -4,7 +4,7 @@ package com.example.codingzone.Models;
 public class QuestionsModel {
 
 
-    private String question_id;
+    private int question_id;
     private String question;
     private String answer1;
     private String answer2;
@@ -13,7 +13,7 @@ public class QuestionsModel {
 
 
     public QuestionsModel() {}
-    public QuestionsModel(String question_id, String question, String answer1, String answer2, String answer3, String correct) {
+    public QuestionsModel(int question_id, String question, String answer1, String answer2, String answer3, String correct) {
         this.question_id = question_id;
         this.question = question;
         this.answer1 = answer1;
@@ -25,8 +25,7 @@ public class QuestionsModel {
 
 
 
-    public String getQuestion_id() {return question_id;}
-    public void setQuestion_id(String question_id) {this.question_id = question_id;}
+    public int getQuestion_id() {return question_id;}
 
     public String getQuestion() {return this.question;}
     public void setQuestion(String question) {this.question = question;}

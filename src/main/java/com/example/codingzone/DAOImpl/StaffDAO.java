@@ -46,7 +46,9 @@ public class StaffDAO extends DAO<StaffModel> {
 
 
     @Override
-    public void findAll() {}
+    public boolean findAll() {
+        return false;
+    }
 
     @Override
     public void delete(StaffModel obj) {

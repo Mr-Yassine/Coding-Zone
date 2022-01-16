@@ -11,10 +11,15 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "Questions", value = "/Questions")
 public class Questions extends HttpServlet {
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.sendRedirect("questions.jsp");
+
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,9 +30,16 @@ public class Questions extends HttpServlet {
         String answer2 = request.getParameter("answer2");
         String answer3 = request.getParameter("answer3");
         Integer correct = Integer.parseInt(request.getParameter("correct"));
+        request.getRequestDispatcher("/questions.jsp").forward(request, response);
 
         PrintWriter out = response.getWriter();
         QuestionsModel q = new QuestionsModel();
+
+        out.println(question);
+        out.println(answer1);
+        out.println(answer2);
+        out.println(answer3);
+        out.println(correct);
 
         try {
 
@@ -48,4 +60,5 @@ public class Questions extends HttpServlet {
             e.getCause();
         }
     }
+
 }

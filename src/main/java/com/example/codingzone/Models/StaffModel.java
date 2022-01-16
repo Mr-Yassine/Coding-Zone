@@ -20,7 +20,6 @@ public class StaffModel {
 
 
     public String getId() {return staff_id;}
-    public void setId(String id) {this.staff_id = staff_id;}
 
     public String getUsername() {return username;}
     public void setUsername(String username) {this.username = username;}

@@ -39,7 +39,6 @@ public class Staff extends HttpServlet {
 
             DAOFactory.register(s);
 
-            //check if the user is registered or not and redirect to login page if not registered
             if (DAOFactory.isRegistered(s)) {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", false);
@@ -56,9 +55,7 @@ public class Staff extends HttpServlet {
             out.println("<h1>Error</h1>");
         }
 
-        //show all the users in the database in the table format
-        out.println(DAOFactory.getAllUsers());
-        response.sendRedirect("dashboard.jsp");
+
 
 
 

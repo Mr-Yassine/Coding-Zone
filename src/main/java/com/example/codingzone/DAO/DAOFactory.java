@@ -2,6 +2,7 @@ package com.example.codingzone.DAO;
 
 import com.example.codingzone.DAOImpl.QuestionsDAO;
 import com.example.codingzone.DAOImpl.StaffDAO;
+import com.example.codingzone.DAOImpl.StudentsDAO;
 import com.example.codingzone.Models.QuestionsModel;
 import com.example.codingzone.Models.StaffModel;
 
@@ -11,11 +12,15 @@ public class DAOFactory {
         return new StaffDAO().login(username,password);
     }
 
-    public static void register(StaffModel s){
-        new StaffDAO().add(s);
+    public static boolean signin(String name, String code){
+        return new StudentsDAO().login(name, code);
     }
 
 
+
+    public static void register(StaffModel s){
+        new StaffDAO().add(s);
+    }
     public static boolean isRegistered(StaffModel s) {
         return new StaffDAO().isRegistered(s);
 
@@ -25,11 +30,14 @@ public class DAOFactory {
         return new StaffDAO().getAllUsers();
     }
 
-    public static boolean addQuestion(QuestionsModel q){
+
+
+
+    public static void addQuestion(QuestionsModel q){
         new QuestionsDAO().add(q);
-        return false;
     }
 
-
-
+    public static boolean getAllQuestions() {
+        return new QuestionsDAO().findAll();
+    }
 }
