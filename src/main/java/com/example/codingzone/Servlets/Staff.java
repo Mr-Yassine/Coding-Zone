@@ -37,12 +37,11 @@ public class Staff extends HttpServlet {
             s.setEmail(email);
             s.setPassword(password);
 
-            DAOFactory.register(s);
+            boolean staff = DAOFactory.register(s);
 
-            if (DAOFactory.isRegistered(s)) {
+            if (staff) {
                 HttpSession session = request.getSession();
-                session.setAttribute("user", false);
-                out.println("<h1>Account added successfully</h1>");
+                session.setAttribute("staff", true);
                 response.sendRedirect("login.jsp");
 
             } else {
@@ -50,15 +49,9 @@ public class Staff extends HttpServlet {
             }
 
 
-
         } catch (Exception e){
-            out.println("<h1>Error</h1>");
+            e.printStackTrace();
+            e.getCause();
         }
-
-
-
-
-
-
     }
 }

@@ -44,16 +44,13 @@ public class StaffDAO extends DAO<StaffModel> {
     public Object update(StaffModel obj) {return null;}
 
 
-
     @Override
-    public boolean findAll() {
-        return false;
-    }
+    public void delete(StaffModel obj) {}
 
-    @Override
-    public void delete(StaffModel obj) {
 
-    }
+
+
+
 
 
     public boolean login(String username, String password) {
@@ -85,7 +82,7 @@ public class StaffDAO extends DAO<StaffModel> {
 
 
 
-    public boolean isRegistered(StaffModel s) {
+    public boolean isRegistered(StaffModel s){
 
         String query = "SELECT count(1) FROM Staff WHERE username ='" + s.getUsername() + "'";
 

@@ -2,6 +2,7 @@ package com.example.codingzone.DAOImpl;
 
 import com.example.codingzone.Config.Config;
 import com.example.codingzone.DAO.DAO;
+import com.example.codingzone.Models.QuestionsModel;
 import com.example.codingzone.Models.StaffModel;
 
 import java.sql.ResultSet;
@@ -18,24 +19,18 @@ public class StudentsDAO extends DAO<StaffModel> {
     }
 
     @Override
-    public void find(int id) {
-
-    }
+    public void find(int id) {}
 
     @Override
-    public Object update(StaffModel obj) throws SQLException {
-        return null;
-    }
+    public Object update(StaffModel obj) throws SQLException {return null;}
 
     @Override
-    public boolean findAll() {
-        return false;
-    }
+    public void delete(StaffModel obj) {}
 
-    @Override
-    public void delete(StaffModel obj) {
 
-    }
+
+
+
 
 
     public boolean login(String name, String code) {

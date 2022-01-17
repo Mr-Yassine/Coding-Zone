@@ -34,30 +34,52 @@
 
 
     <%
-        Object question = request.getAttribute("question");
-        Object answer1 = request.getAttribute("answer1");
-        Object answer2 = request.getAttribute("answer2");
-        Object answer3 = request.getAttribute("answer3");
-        Object correct = request.getAttribute("correct");
+        String question = request.getParameter("question");
+        String answer1 = request.getParameter("answer1");
+        String answer2 = request.getParameter("answer2");
+        String answer3 = request.getParameter("answer3");
+        String correct = request.getParameter("correct");
     %>
-    <p><%=question%></p>
 
 
-    <!---if the user has entered a question and answers, then display the question and answers in a table with the correct answer highlighted in green-->
+
     <%if(question != null && answer1 != null && answer2 != null && answer3 != null && correct != null){%>
     <table>
         <tr>
-            <td><%=question%></td>
+            <td>
+                <%= question %>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                <%if(correct.equals("1")){%>
+                    <span
+                            style="color: green"><%}%> <%= answer1 %> <%if(correct.equals("1")){%>
+                    </span>
+                <%}%>
+            </td>
         </tr>
         <tr>
-            <td><%if(correct == 1){%><span style="color: green"><%}%><%=answer1%><%if(correct == 1){%></span><%}%></td>
+            <td>
+                <%if(correct.equals("2")){%>
+                    <span
+                        style="color: green; font-weight:bold"><%}%> <%= answer2 %> <%if(correct.equals("2")){%>
+                    </span>
+                <%}%>
+            </td>
         </tr>
         <tr>
-            <td><%if(correct == 2){%><span style="color: green"><%}%><%=answer2%><%if(correct == 2){%></span><%}%></td>
+            <td>
+                <%if(correct.equals("3")){%>
+                    <span
+                        style="color: green"><%}%> <%= answer3 %> <%if(correct.equals("3")){%>
+                    </span>
+                <%}%>
+            </td>
         </tr>
-        <tr>
-            <td><%if(correct == 3){%><span style="color: green"><%}%><%=answer3%><%if(correct == 3){%></span><%}%></td>
-        </tr>
+
     </table>
     <%}%>
 

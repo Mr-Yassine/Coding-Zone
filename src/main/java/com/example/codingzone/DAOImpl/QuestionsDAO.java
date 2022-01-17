@@ -9,8 +9,8 @@ import java.sql.SQLException;
 
 public class QuestionsDAO extends DAO<QuestionsModel> {
 
-
-    public Object add(QuestionsModel q){
+    @Override
+    public Object add(QuestionsModel q) throws SQLException {
 
         String query = "INSERT INTO Questions (question, answer1, answer2, answer3, correct) VALUES (?,?,?,?,?)";
 
@@ -32,7 +32,6 @@ public class QuestionsDAO extends DAO<QuestionsModel> {
         return null;
     }
 
-
     @Override
     public void find(int id) {
 
@@ -40,7 +39,7 @@ public class QuestionsDAO extends DAO<QuestionsModel> {
 
     @Override
     public Object update(QuestionsModel obj) throws SQLException {
-        //update question and answers in database with the same id as the question object passed in the parameter of the method update
+
         String query = "UPDATE Questions SET question = ?, answer1 = ?, answer2 = ?, answer3 = ?, correct = ? WHERE id = ?";
 
         try {
@@ -62,11 +61,24 @@ public class QuestionsDAO extends DAO<QuestionsModel> {
     }
 
     @Override
-    public boolean findAll() {
-        return false;
-    }
-
-    @Override
     public void delete(QuestionsModel obj) {}
 
+
+
+    /*
+    public QuestionsModel findAll(QuestionsModel q) throws SQLException {
+
+        String query = "SELECT * FROM Questions";
+
+        try {
+            PreparedStatement preparedStatement = Config.getConnection().prepareStatement(query);
+            //return getAllQuestions(preparedStatement.executeQuery());
+            return q;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+        return null;
+    }
+     */
 }

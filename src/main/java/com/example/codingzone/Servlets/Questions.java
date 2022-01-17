@@ -8,6 +8,8 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.util.List;
 
 @WebServlet(name = "Questions", value = "/Questions")
 public class Questions extends HttpServlet {
@@ -30,7 +32,9 @@ public class Questions extends HttpServlet {
         String answer2 = request.getParameter("answer2");
         String answer3 = request.getParameter("answer3");
         Integer correct = Integer.parseInt(request.getParameter("correct"));
-        request.getRequestDispatcher("/questions.jsp").forward(request, response);
+
+
+        response.sendRedirect( "questions.jsp?question=" + question + "&answer1=" + answer1 + "&answer2=" + answer2 + "&answer3=" + answer3 + "&correct=" + correct);
 
         PrintWriter out = response.getWriter();
         QuestionsModel q = new QuestionsModel();

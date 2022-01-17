@@ -37,11 +37,11 @@ public class Login extends HttpServlet {
             }else {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", false);
-                out.println("<h1>Welcome to dashboard</h1>");
                 response.sendRedirect("dashboard.jsp");
             }
         } catch (Exception e){
-            out.println("<h1>Error</h1>");
+            e.printStackTrace();
+            e.getCause();
         }
 
 
