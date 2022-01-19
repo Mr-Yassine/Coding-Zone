@@ -1,0 +1,25 @@
+create function f() returns text language sql as $$
+  SELECT string_agg (substr('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', ceil (random() * 7862)::integer, 1), '')
+  FROM generate_series(1, 6)
+$$;
+CREATE TABLE Students (
+	student_id serial PRIMARY KEY,
+	fname VARCHAR ( 150 ) NOT NULL,
+	email VARCHAR ( 255 ) UNIQUE NOT NULL,
+	code text UNIQUE NOT NULL DEFAULT f()
+);
+
+
+insert into students (fname, email) VALUES ( 'student 1', 's1@gmail.com');
+
+
+
+SELECT count(1) FROM Students WHERE fname ='student 1' AND code ='3Jal9m';
+
+select * from students;
+
+
+DROP TABLE Students;
+
+
+

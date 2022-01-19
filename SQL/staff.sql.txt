@@ -1,0 +1,42 @@
+CREATE TABLE Staff (
+	staff_id serial PRIMARY KEY,
+	username VARCHAR ( 50 ) UNIQUE NOT NULL,
+	email VARCHAR ( 255 ) UNIQUE NOT NULL,
+	password VARCHAR ( 50 ) NOT NULL,
+    last_login TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+insert into Staff (username, email, password) values ('yassine', 'yassine@gmail.com', 'azerty');
+
+
+SELECT * FROM Staff;
+
+SELECT count(1) FROM Staff WHERE username = 'yassine' AND password = 'azerty';
+
+
+DROP TABLE Staff;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+SELECT id, username, email FROM Staff;
+/* Get the data into a temp table */
+SELECT * INTO TempTable FROM Staff
+/* Drop the columns that are not needed */
+ALTER TABLE TempTable DROP COLUMN email
+/* Get results and drop temp table */
+SELECT * FROM TempTable 
+DROP TABLE TempTable
+*/
