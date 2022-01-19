@@ -15,8 +15,8 @@ public class DAOFactory {
         return new StaffDAO().login(username, password);
     }
 
-    public static boolean signin(String name, String code) {
-        return new StudentsDAO().login(name, code);
+    public static boolean signin(String code) {
+        return new StudentsDAO().login(code);
     }
 
 

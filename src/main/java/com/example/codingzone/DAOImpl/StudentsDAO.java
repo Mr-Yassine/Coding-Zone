@@ -33,9 +33,9 @@ public class StudentsDAO extends DAO<StaffModel> {
 
 
 
-    public boolean login(String name, String code) {
+    public boolean login(String code) {
 
-        String query = "SELECT count(1) FROM Students WHERE fname ='" + name + "' AND code ='" + code + "'";
+        String query = "SELECT count(1) FROM Students WHERE code ='" + code + "'";
 
         try {
 

@@ -21,13 +21,21 @@ public class Student extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String name = request.getParameter("name");
-        String code = request.getParameter("code");
+        String c1 = request.getParameter("1");
+        String c2 = request.getParameter("2");
+        String c3 = request.getParameter("3");
+        String c4 = request.getParameter("4");
+        String c5 = request.getParameter("5");
+        String c6 = request.getParameter("6");
+
+        String code = (c1 + c2 + c3 + c4 + c5 + c6);
+
+
 
         PrintWriter out = response.getWriter();
 
         try {
-            Boolean student = DAOFactory.signin(name, code);
+            Boolean student = DAOFactory.signin(code);
 
             if(!student){
                 out.println("<h1>Wrong code</h1>");
